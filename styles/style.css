@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+:root {
+  --bright-blue: hsl(220, 98%, 61%);
+  --check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-bg: hsl(0, 0%, 98%);
+  --clr-list-bg: hsl(0,0%,100%);
+  --clr-text-secondary: hsl(236, 33%, 92%);
+  --clr-text-completed: hsl(233, 11%, 84%);
+  --clr-placeholder: hsl(236, 9%, 61%);
+  --clr-text: hsl(235, 19%, 35%);
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --light-grayish-blue: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+}
+
+html {
+  font-size: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1.5;
+  color: var(--text);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  display: inline-block;
+}
+
+.todo-section {
+  background: var(--clr-bg) url("/images/bg-mobile-light.jpg") no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+}
+
+.todo-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 2.3rem;
+}
+
+.todo-header .title {
+  color: var(--clr-white);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: .7rem;
+}
+
+.todo-header .theme-toggle img {
+  height: 1.2rem;
+  cursor: pointer;
+}
+
+.todo-form {
+  background: var(--clr-list-bg);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: .9rem 1.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-form .add-item {
+  cursor: pointer;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--clr-text-completed);
+  border-radius: 50%;
+  background: transparent;
+  margin-right: 0.8rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.todo-form .todo-input {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .8rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.todo-form .todo-input::-webkit-input-placeholder {
+  color: var(--clr-text);
+}
+
+.todo-form .todo-input:-ms-input-placeholder {
+  color: var(--clr-text);
+}
+
+.todo-form .todo-input::-ms-input-placeholder {
+  color: var(--clr-text);
+}
+
+.todo-form .todo-input::placeholder {
+  color: var(--clr-text);
+}
+
+.todo-container {
+  background: var(--clr-list-bg);
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 10px 50px -15px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 10px 50px -15px rgba(0, 0, 0, 0.4);
+}
+
+.todo-item {
+  padding: 1rem 1.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid var(--clr-text-secondary);
+}
+
+.todo-item .checkbox {
+  cursor: pointer;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--clr-text-completed);
+  border-radius: 50%;
+  margin-right: 0.8rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.todo-item .todo-text {
+  font-size: .8rem;
+}
+
+.todo-item .remove-btn {
+  cursor: pointer;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  width: 1rem;
+  height: 1rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
