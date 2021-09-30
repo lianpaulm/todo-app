@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 :root {
   --bright-blue: hsl(220, 98%, 61%);
-  --check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --check-background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
   --clr-white: hsl(0, 0%, 100%);
   --clr-bg: hsl(0, 0%, 98%);
   --clr-list-bg: hsl(0,0%,100%);
@@ -112,10 +112,23 @@ button {
   height: 1.25rem;
   border: 1px solid var(--clr-text-secondary);
   border-radius: 50%;
-  background: transparent;
+  background: var(--clr-list-bg);
   margin-right: 0.8rem;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  position: relative;
+}
+
+.checkbox:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--clr-list-bg)), to(var(--clr-list-bg))) padding-box, -webkit-gradient(linear, left top, right bottom, from(#57ddff), to(#c058f3)) border-box;
+  background: linear-gradient(var(--clr-list-bg), var(--clr-list-bg)) padding-box, linear-gradient(to bottom right, #57ddff, #c058f3) border-box;
+  border: 1px solid transparent;
+}
+
+.toggleCheck, .toggleCheck:hover {
+  background: url("../images/icon-check.svg") center no-repeat, -webkit-gradient(linear, left top, right bottom, from(#57ddff), to(#c058f3)) border-box;
+  background: url("../images/icon-check.svg") center no-repeat, linear-gradient(to bottom right, #57ddff, #c058f3) border-box;
+  border: 1px solid transparent;
 }
 
 .todo-form {
@@ -173,6 +186,8 @@ button {
       -ms-flex-align: center;
           align-items: center;
   border-bottom: 1px solid var(--clr-text-secondary);
+  cursor: -webkit-grab;
+  cursor: grab;
 }
 
 .todo-item .item-complete {
@@ -182,6 +197,9 @@ button {
 
 .todo-item .todo-text {
   font-size: .8rem;
+  word-break: break-all;
+  margin-right: 0.8rem;
+  cursor: pointer;
 }
 
 .todo-item .remove-btn {

@@ -4,7 +4,7 @@
 :root {
 // Primary
 --bright-blue: hsl(220, 98%, 61%);
---check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+--check-background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
 
 // Light Theme
 --clr-white: hsl(0, 0%, 100%);
@@ -115,9 +115,22 @@ button {
   height: 1.25rem;
   border: 1px solid var(--clr-text-secondary);
   border-radius: 50%;
-  background: transparent;
+  background: var(--clr-list-bg);
   margin-right: 0.8rem;
   flex-shrink: 0;
+  position: relative;
+  
+    &:hover {
+      background: linear-gradient(var(--clr-list-bg), var(--clr-list-bg)) padding-box, linear-gradient(to bottom right, #57ddff, #c058f3) border-box;
+      border: 1px solid transparent;
+    }
+}
+
+// toggle check button
+.toggleCheck, .toggleCheck:hover {
+  background: url("../images/icon-check.svg") center no-repeat, linear-gradient(to bottom right, #57ddff, #c058f3) border-box;
+  border: 1px solid transparent;
+  // background-size: 1rem 1rem, 100% 100%;
 }
 
 // add todo input styles
@@ -128,9 +141,6 @@ button {
   padding: .9rem 1.25rem;
   display: flex;
   align-items: center;
-
-    // .add-item {
-    // }
 
     .todo-input {
       font-family: 'Josefin Sans', sans-serif;
@@ -160,16 +170,18 @@ button {
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--clr-text-secondary);
-
-    // .check-item {
-    // }
+  cursor: grab;
     
     .item-complete {
       text-decoration: line-through;
       color: var(--clr-text-completed);
     }
+
     .todo-text {
       font-size: .8rem;
+      word-break: break-all;
+      margin-right: 0.8rem;
+      cursor: pointer;
     }
 
     .remove-btn {
