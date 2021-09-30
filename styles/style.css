@@ -2,20 +2,27 @@
 :root {
   --bright-blue: hsl(220, 98%, 61%);
   --check-background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+  --bg-image-mobile: url('/images/bg-mobile-light.jpg') no-repeat;
+  --bg-image-desktop: url('/images/bg-desktop-light.jpg') no-repeat;
   --clr-white: hsl(0, 0%, 100%);
   --clr-bg: hsl(0, 0%, 98%);
   --clr-list-bg: hsl(0,0%,100%);
+  --clr-text: hsl(235, 19%, 35%);
   --clr-text-secondary: hsl(236, 33%, 92%);
   --clr-text-completed: hsl(233, 11%, 84%);
   --clr-placeholder: hsl(236, 9%, 61%);
-  --clr-text: hsl(235, 19%, 35%);
-  --very-dark-blue: hsl(235, 21%, 11%);
-  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
-  --light-grayish-blue: hsl(234, 39%, 85%);
-  --light-grayish-blue: hsl(236, 33%, 92%);
-  --dark-grayish-blue: hsl(234, 11%, 52%);
-  --very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+}
+
+.dark-theme {
+  --bg-image-mobile: url('/images/bg-mobile-dark.jpg') no-repeat;
+  --bg-image-desktop: url('/images/bg-desktop-dark.jpg') no-repeat;
+  --clr-bg: hsl(235, 21%, 11%);
+  --clr-list-bg: hsl(235, 24%, 19%);
+  --clr-text: hsl(234, 39%, 85%);
+  --clr-text-hover: hsl(236, 33%, 92%);
+  --clr-text-secondary: hsl(237, 14%, 26%);
+  --clr-text-completed: hsl(233, 14%, 35%);
+  --clr-placeholder: hsl(234, 11%, 52%);
 }
 
 html {
@@ -70,7 +77,7 @@ button {
   left: 0;
   width: 100%;
   height: 13rem;
-  background: url("/images/bg-mobile-light.jpg") no-repeat;
+  background: var(--bg-image-mobile);
   background-size: cover;
   position: absolute;
   z-index: -1;
@@ -78,7 +85,7 @@ button {
 
 @media screen and (min-width: 33rem) {
   .todo-section::before {
-    background: url("/images/bg-desktop-light.jpg") no-repeat;
+    background: var(--bg-image-desktop);
     background-position: top center;
     height: 50rem;
   }
@@ -101,9 +108,14 @@ button {
   letter-spacing: .7rem;
 }
 
+.todo-header .theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .todo-header .theme-toggle img {
   height: 1.2rem;
-  cursor: pointer;
 }
 
 .checkbox {
@@ -135,7 +147,7 @@ button {
   background: var(--clr-list-bg);
   border-radius: 5px;
   margin-bottom: 1rem;
-  padding: .9rem 1.25rem;
+  padding: 1rem 1.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -146,11 +158,12 @@ button {
 
 .todo-form .todo-input {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: .8rem;
+  font-size: .75rem;
   width: 100%;
   border: none;
   background: transparent;
   outline: none;
+  color: var(--clr-text);
 }
 
 .todo-form .todo-input::-webkit-input-placeholder {
@@ -196,7 +209,7 @@ button {
 }
 
 .todo-item .todo-text {
-  font-size: .8rem;
+  font-size: .75rem;
   word-break: break-all;
   margin-right: 0.8rem;
   cursor: pointer;
@@ -207,8 +220,8 @@ button {
   margin-left: auto;
   border: none;
   background: transparent;
-  width: 1rem;
-  height: 1rem;
+  width: .8rem;
+  height: .8rem;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
