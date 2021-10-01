@@ -66,7 +66,7 @@ button {
 }
 
 .todo-section .container {
-  max-width: 33rem;
+  max-width: 33.75rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -84,10 +84,16 @@ button {
 }
 
 @media screen and (min-width: 33rem) {
+  body {
+    font-size: 1.125rem;
+  }
+  .todo-section {
+    padding: 4.8rem 2rem;
+  }
   .todo-section::before {
     background: var(--bg-image-desktop);
     background-position: top center;
-    height: 50rem;
+    height: 18rem;
   }
 }
 
@@ -116,6 +122,18 @@ button {
 
 .todo-header .theme-toggle img {
   height: 1.2rem;
+}
+
+@media screen and (min-width: 33rem) {
+  .todo-header {
+    margin-bottom: 3rem;
+  }
+  .todo-header .title {
+    font-size: 2rem;
+  }
+  .todo-header .theme-toggle img {
+    height: 1.8rem;
+  }
 }
 
 .checkbox {
@@ -154,9 +172,11 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-shadow: 0 10px 35px -20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 10px 35px -20px rgba(0, 0, 0, 0.3);
 }
 
-.todo-form .todo-input {
+.todo-input {
   font-family: 'Josefin Sans', sans-serif;
   font-size: .75rem;
   width: 100%;
@@ -166,28 +186,49 @@ button {
   color: var(--clr-text);
 }
 
-.todo-form .todo-input::-webkit-input-placeholder {
+.todo-input::-webkit-input-placeholder {
   color: var(--clr-placeholder);
 }
 
-.todo-form .todo-input:-ms-input-placeholder {
+.todo-input:-ms-input-placeholder {
   color: var(--clr-placeholder);
 }
 
-.todo-form .todo-input::-ms-input-placeholder {
+.todo-input::-ms-input-placeholder {
   color: var(--clr-placeholder);
 }
 
-.todo-form .todo-input::placeholder {
+.todo-input::placeholder {
   color: var(--clr-placeholder);
+}
+
+@media screen and (min-width: 33rem) {
+  .checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 2rem;
+    border-width: 2px;
+  }
+  .checkbox:hover {
+    border-width: 2px;
+  }
+  .toggleCheck, .toggleCheck:hover {
+    background-size: .75rem .7rem, 100% 100%;
+  }
+  .todo-form {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+  }
+  .todo-input {
+    font-size: 1.125rem;
+  }
 }
 
 .todo-container {
   background: var(--clr-list-bg);
   border-radius: 5px;
-  overflow: hidden;
-  -webkit-box-shadow: 0 10px 50px -15px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 10px 50px -15px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.3);
 }
 
 .todo-item {
@@ -224,4 +265,101 @@ button {
   height: .8rem;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+}
+
+@media screen and (min-width: 33rem) {
+  .todo-item {
+    padding: 1.25rem 1.5rem;
+  }
+  .todo-item .todo-text {
+    font-size: 1.125rem;
+    margin-right: 1rem;
+  }
+  .todo-item .remove-btn {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+}
+
+.todo-list-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 1.25rem;
+  position: relative;
+}
+
+.items-left,
+.clear-completed {
+  font-size: .8125rem;
+  color: var(--clr-placeholder);
+}
+
+.clear-completed {
+  cursor: pointer;
+  -webkit-transition: color .25s;
+  transition: color .25s;
+}
+
+.clear-completed:hover {
+  color: var(--clr-text);
+}
+
+.filter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.125rem;
+  -webkit-box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.6);
+}
+
+.filter-container span {
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--clr-placeholder);
+  -webkit-transition: color .25s;
+  transition: color .25s;
+  display: block;
+}
+
+.filter-container span:hover {
+  color: var(--clr-text);
+}
+
+@media screen and (max-width: 33rem) {
+  .todo-list-info {
+    padding: 1.25rem 1.25rem;
+  }
+  .items-left,
+  .clear-completed {
+    font-size: .6875rem;
+  }
+  .filter-container span {
+    font-size: .8rem;
+  }
+  .filter-container {
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 1rem;
+    width: 100%;
+    background: var(--clr-list-bg);
+    border-radius: 5px;
+    padding: 1rem 1.25rem;
+  }
 }

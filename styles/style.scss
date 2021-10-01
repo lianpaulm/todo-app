@@ -61,6 +61,7 @@ button {
   display: inline-block;
 }
 
+// todo section
 .todo-section {
   background: var(--clr-bg) ;
   min-height: 100vh;
@@ -69,7 +70,7 @@ button {
   position: relative;
 
     .container {
-      max-width: 33rem;
+      max-width: 33.75rem;
       margin-left: auto;
       margin-right: auto;
     }
@@ -87,11 +88,20 @@ button {
   z-index: -1;
 }
 
+// todo section responsive
 @media screen and (min-width: 33rem) {
+  body {
+    font-size: 1.125rem;
+  }
+
+  .todo-section {
+    padding: 4.8rem 2rem;
+  }
+
   .todo-section::before {
     background: var(--bg-image-desktop);
     background-position: top center;
-    height: 50rem;
+    height: 18rem;
   }
 }
 
@@ -119,6 +129,21 @@ button {
     }
 }
 
+// todo heading responsive
+@media screen and (min-width: 33rem) {
+  .todo-header {
+    margin-bottom: 3rem;
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .theme-toggle img {
+        height: 1.8rem;
+      }
+  }
+}
+
 // checkbox styles
 .checkbox {
   cursor: pointer;
@@ -141,10 +166,9 @@ button {
 .toggleCheck, .toggleCheck:hover {
   background: url("../images/icon-check.svg") center no-repeat, linear-gradient(to bottom right, #57ddff, #c058f3) border-box;
   border: 1px solid transparent;
-  // background-size: 1rem 1rem, 100% 100%;
 }
 
-// add todo input styles
+// todo input styles
 .todo-form {
   background: var(--clr-list-bg);
   border-radius: 5px;
@@ -152,28 +176,55 @@ button {
   padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
+  box-shadow: 0 10px 35px -20px rgba(0,0,0,0.3);
+}
 
-    .todo-input {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: .75rem;
-      width: 100%;
-      border: none;
-      background: transparent;
-      outline: none;
-      color: var(--clr-text);
-    
-        &::placeholder {
-          color: var(--clr-placeholder);
-        }
+.todo-input {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .75rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--clr-text);
+
+    &::placeholder {
+      color: var(--clr-placeholder);
     }
+}
+
+// checkbox and todo input responsive
+@media screen and (min-width: 33rem) {
+  .checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 2rem;
+    border-width: 2px;
+
+      &:hover {
+        border-width: 2px;
+      }
+  }
+
+  .toggleCheck, .toggleCheck:hover {
+    background-size: .75rem .7rem, 100% 100%;
+  }
+
+  .todo-form {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .todo-input {
+    font-size: 1.125rem;
+  }
 }
 
 // todo lists container
 .todo-container {
   background: var(--clr-list-bg);
   border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 10px 50px -15px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 40px -20px rgba(0,0,0,0.3);
 }
 
 // todo list items 
@@ -207,10 +258,95 @@ button {
     }
 }
 
+// todo list item responsive
+@media screen and (min-width: 33rem) {
+  .todo-item {
+    padding: 1.25rem 1.5rem;
 
+      .todo-text {
+        font-size: 1.125rem;
+        margin-right: 1rem;
+      }
 
+      .remove-btn {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+  }
+}
 
+// todo list information
+.todo-list-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  position: relative;
+}
 
+.items-left, 
+.clear-completed {
+  font-size: .8125rem;
+  color: var(--clr-placeholder);
+}
+
+.clear-completed {
+  cursor: pointer;
+  transition: color .25s;
+
+    &:hover {
+        color: var(--clr-text);
+    }
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.125rem;
+  box-shadow: 0 10px 40px -20px rgba(0,0,0,0.6);
+}
+
+.filter-container span {
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--clr-placeholder);
+  transition: color .25s;
+  display: block;
+
+      &:hover {
+        color: var(--clr-text);
+      }
+}
+
+// todo list information responsive
+@media screen and (max-width: 33rem) {
+  .todo-list-info {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .items-left, 
+  .clear-completed {
+    font-size: .6875rem;
+  }
+
+  .filter-container span {
+    font-size: .8rem;
+  }
+
+  .filter-container {
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 1rem;
+    width: 100%;
+    background: var(--clr-list-bg);
+    border-radius: 5px;
+    padding: 1rem 1.25rem;
+  }
+}
 
 
 
