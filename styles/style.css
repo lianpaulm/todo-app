@@ -257,12 +257,12 @@ button {
 }
 
 .todo-item .remove-btn {
+  background: transparent;
   cursor: pointer;
   margin-left: auto;
   border: none;
-  background: transparent;
-  width: .8rem;
-  height: .8rem;
+  width: .9rem;
+  height: .9rem;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
@@ -271,6 +271,9 @@ button {
   .todo-item {
     padding: 1.25rem 1.5rem;
   }
+  .todo-item:hover .remove-btn {
+    opacity: 1;
+  }
   .todo-item .todo-text {
     font-size: 1.125rem;
     margin-right: 1rem;
@@ -278,13 +281,11 @@ button {
   .todo-item .remove-btn {
     width: 1.125rem;
     height: 1.125rem;
+    opacity: 0;
   }
 }
 
 .todo-list-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -293,6 +294,13 @@ button {
           align-items: center;
   padding: 1rem 1.25rem;
   position: relative;
+  display: none;
+}
+
+.display-todo-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .items-left,
@@ -321,22 +329,24 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 1.125rem;
+  gap: 1.25rem;
   -webkit-box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.6);
           box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.6);
 }
 
-.filter-container span {
-  cursor: pointer;
+.filter-btn {
+  font-family: 'Josefin Sans', sans-serif;
   font-size: .9rem;
   font-weight: 700;
   color: var(--clr-placeholder);
+  background: transparent;
+  border: none;
   -webkit-transition: color .25s;
   transition: color .25s;
-  display: block;
+  cursor: pointer;
 }
 
-.filter-container span:hover {
+.filter-btn:hover {
   color: var(--clr-text);
 }
 
@@ -348,9 +358,6 @@ button {
   .clear-completed {
     font-size: .6875rem;
   }
-  .filter-container span {
-    font-size: .8rem;
-  }
   .filter-container {
     gap: 1rem;
     position: absolute;
@@ -361,5 +368,8 @@ button {
     background: var(--clr-list-bg);
     border-radius: 5px;
     padding: 1rem 1.25rem;
+  }
+  .filter-btn {
+    font-size: .8rem;
   }
 }

@@ -1,6 +1,7 @@
 const form = document.querySelector('.todo-form');
 const input = document.querySelector('.todo-input');
 const todoList = document.querySelector('.todo-list');
+const todoInfo = document.querySelector('.todo-list-info')
 
 form.addEventListener('submit', addTodo);
 
@@ -9,7 +10,7 @@ function addTodo(event) {
   
   const value = input.value;
   input.value = '';
-
+  
   const item = document.createElement('li');
   item.classList.add('todo-item');
   
@@ -17,16 +18,18 @@ function addTodo(event) {
   if(value) {
     item.innerHTML = `<button class="check-item checkbox" aria-label="checkbox"></button>
     <p class="todo-text">${value}</p>
-    <button class="remove-btn">
-      <img src="./images/icon-cross.svg" alt="">
-    </button>`;
+    <button class="remove-btn" aria-label="remove button"><img src="./images/icon-cross.svg" alt=""></button>`;
     todoList.append(item)
   };
 
-  // adding check button
+  if (todoList.childElementCount > 0) {
+    todoInfo.classList.add('display-todo-info');
+  } 
+  
   const checkItem = item.querySelector('.check-item');
   const todoText = item.querySelector('.todo-text');
-
+  const removeItem = item.querySelector('.remove-btn');
+  
   checkItem.addEventListener('click', () => {
     checkItem.classList.toggle('toggleCheck')
     todoText.classList.toggle('item-complete');
@@ -35,13 +38,27 @@ function addTodo(event) {
     checkItem.classList.toggle('toggleCheck');
     todoText.classList.toggle('item-complete');
   })
-
-  // adding remove button
-  const removeItem = item.querySelector('.remove-btn');
   removeItem.addEventListener('click', () => {
     removeItem.parentElement.remove();
+    console.log(todoList.childElementCount);
+    if (todoList.childElementCount === 0) {
+      todoInfo.classList.remove('display-todo-info');
+    }
   })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
