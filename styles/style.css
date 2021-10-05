@@ -267,7 +267,28 @@ button {
   color: var(--clr-text-completed);
 }
 
-.display-task-status {
+.todo-empty {
+  padding: 1rem 1.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid var(--clr-text-secondary);
+  display: none;
+}
+
+.todo-empty .empty-text {
+  font-size: .9rem;
+  text-transform: capitalize;
+  color: var(--clr-placeholder);
+}
+
+.show-todo-empty {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -291,6 +312,8 @@ button {
   }
   .todo-empty {
     padding: 1.25rem 1.5rem;
+  }
+  .todo-empty .empty-text {
     font-size: 1.125rem;
   }
 }

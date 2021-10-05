@@ -259,18 +259,22 @@ button {
   color: var(--clr-text-completed);
 }
 
-// .todo-empty {
-//   font-size: .9rem;
-//   text-transform: capitalize;
-//   color: var(--clr-placeholder);
-//   padding: 1rem 1.25rem;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   border-bottom: 1px solid var(--clr-text-secondary);
-// }
+.todo-empty {
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--clr-text-secondary);
+  display: none;
 
-.display-task-status {
+  .empty-text {
+    font-size: .9rem;
+    text-transform: capitalize;
+    color: var(--clr-placeholder);
+  }
+}
+
+.show-todo-empty {
   display: flex;
 }
 
@@ -297,7 +301,10 @@ button {
 
   .todo-empty {
     padding: 1.25rem 1.5rem;
-    font-size: 1.125rem;
+    
+    .empty-text {
+      font-size: 1.125rem;
+    }
   }
 }
 

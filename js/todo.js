@@ -5,6 +5,8 @@ const todoInfo = document.querySelector('.todo-list-info');
 const itemsLeft = document.querySelector('.items-left');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const clearBtn = document.querySelector('.clear-completed');
+const todoEmpty = document.querySelector('.todo-empty');
+const todoEmptyText = document.querySelector('.empty-text');
 
 
 // item count
@@ -69,15 +71,20 @@ function deleteCheck(e) {
   if(item.classList[0] === 'remove-btn') {
     const todoItem = item.parentElement;
     todoItem.remove();
-    
+
+    // also remove in local storage
     removeLocalTodos(todoItem);
 
     // delete todo info if the todo list have nothing item on it
     if (todoList.childElementCount === 0) {
       todoInfo.classList.remove('display-todo-info');
     }
-    count--;
-    updateItemsCount(count);
+
+    //update items left
+    if (!todoItem.classList.contains('completed')) {
+      count--;
+      updateItemsCount(count);
+    }
   }
 }
 
@@ -85,31 +92,52 @@ function deleteCheck(e) {
 filterBtns.forEach((btn) => {
   btn.addEventListener('click', filterTodo);
 });
-
 // filtering todo list items
 function filterTodo(e) {
   const todos = [...todoList.children];
+  const completedList = [];
+  const activeList = [];
 
   todos.forEach(todo => {
-    switch (e.currentTarget.dataset.id) {
+    const filterCategory = e.currentTarget.dataset.id; 
+
+    switch (filterCategory) {
       case 'all':
         todo.style.display = 'flex';
+        todoEmpty.classList.remove('show-todo-empty');
         break;
-      case 'active':
-        if(!todo.classList.contains('completed')) {
-          todo.style.display = 'flex';
-        } else {
-          todo.style.display = 'none';
-        }
+
+        case 'active':
+          if(!todo.classList.contains('completed')) {
+            todo.style.display = 'flex';
+            activeList.push(todo)
+          } else {
+            todo.style.display = 'none';
+          }
+          
+          todoEmpty.classList.remove('show-todo-empty');
+          if (activeList.length === 0) {
+            todoEmpty.classList.add('show-todo-empty');
+            todoEmptyText.textContent = `no active task`;
+          }
         break;
+
       case 'completed':
         if(todo.classList.contains('completed')) {
           todo.style.display = 'flex'
+          completedList.push(todo);
         }else {
           todo.style.display = 'none';
         }
-    }
-  })
+
+        todoEmpty.classList.remove('show-todo-empty');
+        if (completedList.length === 0) {
+          todoEmpty.classList.add('show-todo-empty');
+          todoEmptyText.textContent = `no completed task`
+        }
+      }
+    })
+
   // adding active status on buttons
   filterBtns.forEach((btn) => {
     btn.classList.remove('active-status');
@@ -201,7 +229,3 @@ function removeLocalTodos(todo){
 
   localStorage.setItem('todos', JSON.stringify(todos));
 }
-
-// localStorage.setItem('names', JSON.stringify(['desirie','lian']))
-// const loversNames = JSON.parse(localStorage.getItem('names'));
-// console.log(loversNames);
